@@ -36,7 +36,6 @@ scrap_page <- function(page_num) {
   return(page_data)
 }
 
-
 # Initialize an empty list to store data frames for each page
 all_pages_data_lausanne <- list()
 

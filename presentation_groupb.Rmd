@@ -1,0 +1,34 @@
+---
+title: "Final presentation : Creating a Shiny Application to find an appartment in Lausanne "
+author: "Arnaud Bertrand, Meriem Ben Mustapha, Alexandre Gautschi, Lawrence Jesudasan,
+  Fabien Calderini"
+date: "`r Sys.Date()`"
+output: 
+  ioslides_presentation:
+    font_adjustment: 1
+    widescreen: yes
+  beamer_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css, echo = FALSE}
+.remark-slide-content {
+  font-size: 28px;
+  padding: 20px 80px 20px 80px;
+}
+.remark-code, .remark-inline-code {
+  background: #f0f0f0;
+}
+.remark-code {
+  font-size: 24px;
+}
+.huge .remark-code { /*Change made here*/
+  font-size: 200% !important;
+}
+.tiny .remark-code { /*Change made here*/
+  font-size: 50% !important;
+}
+```

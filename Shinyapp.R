@@ -2,12 +2,13 @@ library(shiny)
 
 # Define UI
 ui <- fluidPage(
-  titlePanel("Add Postal Code and Number of Rooms"),
+  titlePanel("Find your selling price"),
   sidebarLayout(
     sidebarPanel(
-      textInput("postal_code", "Enter Postal Code:", ""),
-      numericInput("num_rooms", "Enter Number of Rooms:", 0),
-      actionButton("calculate", "Calculate")
+      numericInput("location","Enter Zipcode :", ""),
+      numericInput("meter_square", "Enter Number of square meters :", ""),
+      numericInput("rooms","Enter Number of rooms :", ""),
+      actionButton("", "Calculate")
     ),
     mainPanel(
       h4("Result:"),
