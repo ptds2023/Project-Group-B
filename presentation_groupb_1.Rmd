@@ -1,8 +1,8 @@
 ---
-title: "Programming Tools in Data Science"
-subtitle: "Lecture #1: Introduction"
-author: "Samuel Orso"
-date: "28 September 2023"
+title: "Programming tools in Data Science  "
+subtitle: "Group Project : Creating a Shiny Application to find an appartment in Lausanne "
+author: "Arnaud Bertrand, Meriem Ben Mustapha, Alexandre Gautschi, Lawrence Jesudasan,Fabien Calderini"
+date: "21 December 2023"
 output:
   xaringan::moon_reader:
     css: ["default", "assets/sydney-fonts.css", "assets/sydney.css"]
@@ -18,6 +18,36 @@ output:
       ratio: '16:9' # alternatives '16:9' or '4:3' or others e.g. 13:9
       navigation:
         scroll: false # disable slide transitions by scrolling
+---
+
+
+# Project objectives and potential impacts 
+
+* 
+* 
 
 ---
+
+# Project description  
+
+* Methods used 
+* What inspired us ? 
+* How did we collect the data ? What are the risks of using this strategy ? 
+
+---
+
+# Webscrapping  
+
+
+---
+
+# R Package creation   
+
+
+---
+
+# Shiny App    
+
+
+
 

@@ -10,10 +10,6 @@ output:
   beamer_presentation: default
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ```{css, echo = FALSE}
 .remark-slide-content {
   font-size: 28px;
@@ -32,3 +28,54 @@ knitr::opts_chunk$set(echo = TRUE)
   font-size: 50% !important;
 }
 ```
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(tidytext)
+library(quanteda)
+library(quanteda.textmodels)
+library(quanteda.textstats)
+library(quanteda.textplots)
+library(textdata)
+```
+
+
+# Introduction and Objectives
+
+## Objectives and potential impacts
+
+- Understand the value addition of Text Mining
+- Being able to carry our Exploratory Data Analysis (EDA) on text data using R
+- Apply unsupervised methods for topic modeling
+- Develop several supervised models using text
+- Practice and master the tidy text and `quanteda` packages in R
+
+## Project description  
+
+* Methods used 
+* What inspired us ? 
+* How did we collect the data ? What are the risks of using this strategy ? 
+
+
+# Webscrapping  
+
+## Immoscout website
+
+
+# R Package creation   
+
+## Package functions 
+
+
+# Shiny App
+
+## Price estimation 
+
+## Find the 5 most similar appartments 
+
+## Impact of square meters on the price 
+
