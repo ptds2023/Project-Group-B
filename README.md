@@ -28,6 +28,7 @@ devtools::install_github("ptds2023/Project-Group-B")
 
 ## Dependencies 
 
+- `stats`
 - `shiny` 
 - `ggplot`
 
