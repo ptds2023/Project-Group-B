@@ -23,7 +23,7 @@ using a multiple linear regression model. The model, built on webscrapped data f
 ## Installation 
 
 ```r
-devtools::install_github("ptds/Project-Group-B")
+devtools::install_github("ptds2023/Project-Group-B")
 ```
 
 ## Dependencies 
