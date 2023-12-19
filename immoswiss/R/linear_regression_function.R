@@ -1,15 +1,16 @@
-#' @param num_rooms Numeric vector representing the number of rooms.
-#' @param meter_square Numeric vector representing the number of square meters.
-#' @param location Character vector representing the location (postal code).
-#' @return Numeric vector representing the estimated prices of apartments.
+#' Estimate the price through a multiple linear regression
+#' @param num_rooms The number of rooms.
+#' @param meter_square The number of square meters.
+#' @param location The location (postal code).
+#' @param lausanne The dataset containing information on rooms, meter_square, price, and location
+#' @return The estimated prices of apartments with confidence intervals.
 #' @export
 #' @importFrom stats lm predict
-estimate_price <- function(rooms, meter_square, location) {
-  # Fit a linear regression model using the entire dataset with location as a categorical variable
-  lausanne$location <- factor(lausanne$location)
-  lausanne$location <- relevel(lausanne$location, ref = "1004")
+#' @examples
+#' estimate_price(2, 100, 1000, lausanne) # 2 is the number of rooms, 100 is the number of meter square and 1000 is the location
+estimate_price <- function(rooms, meter_square, location, data) {
   # Assuming 'model' is your linear regression model
-  model <- lm(log(price) ~ rooms +meter_square + as.factor(location) + meter_square:as.factor(location) + rooms:as.factor(location), data = lausanne)
+  model <- lm(log(price) ~ rooms +meter_square + as.factor(location) + meter_square:as.factor(location) + rooms:as.factor(location), data = data)
   summary(model)
   # Create a new data frame with the provided input
   new_data <- data.frame(rooms = rooms, meter_square = meter_square, location = as.factor(location))
@@ -19,9 +20,4 @@ estimate_price <- function(rooms, meter_square, location) {
   print(summary(model))
   return(predicted_price)
 }
-
-results <- estimate_price(rooms = c(2), meter_square = c(80), location = c(1003))
-
-# Access the predicted prices
-print(results$predicted_price)
 
