@@ -15,7 +15,7 @@ estimate_price <- function(rooms, meter_square, location, data) {
   # Create a new data frame with the provided input
   new_data <- data.frame(rooms = rooms, meter_square = meter_square, location = as.factor(location))
   # Predict the price using the model
-  log_predicted_price <- predict(model, newdata = new_data, interval = "confidence", level = 0.75)
+  log_predicted_price <- predict(model, newdata = new_data, interval = "confidence", level = 0.95)
   predicted_price <- exp(log_predicted_price)
   print(summary(model))
   return(predicted_price)
