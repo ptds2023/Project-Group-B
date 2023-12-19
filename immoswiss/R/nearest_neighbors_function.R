@@ -36,8 +36,8 @@ find_nearest_neighbors <- function(nb_rooms, meter_square, location, data, k = 5
   return(sorted_data[1:k, ])
 }
 
-# Find 5 nearest neighbors for a query with 3 rooms and 120 square meters
-#nearest_neighbors <- find_nearest_neighbors(5, 300, "1004", lausanne, k = 5)
-
-# Display the result
-#print(nearest_neighbors)
+# # Find 5 nearest neighbors for a query with 3 rooms and 120 square meters
+# nearest_neighbors <- find_nearest_neighbors(5, 210, "1004", lausanne, k = 10)
+# 
+# # Display the result
+# print(nearest_neighbors)
