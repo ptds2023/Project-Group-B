@@ -62,9 +62,3 @@ launch_shiny_app()
 
 ```
 The 4th argument `lausanne` is the name of the dataset that is already loaded in the package.
-
-# Website 
-
-
-
-Here is the website of our shinyapp : https://ptds2023.github.io/Project-Group-B/immoswiss/
