@@ -7,7 +7,7 @@
 #' @return A data frame with the k nearest neighbors matching the query
 #' @export
 #' @importFrom stats sd
-#' @examples find_nearest_neighbors(5, 210, "1004", lausanne, k = 10)
+#' @examples find_nearest_neighbors(5, 210, 1004, lausanne, k = 10)
 find_nearest_neighbors <- function(rooms, meter_square, location, data, k = 5) {
   valid_locations <- c(1000, 1003, 1004, 1005,1006,1007,1010,1012,1018)
   if (!(location %in% valid_locations)) {
