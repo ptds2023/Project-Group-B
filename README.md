@@ -38,7 +38,7 @@ You can install immoswiss from GitHub using the devtools package. If you don't h
 
 ```r
 install.packages("devtools")
-devtools::install_github("Ourpath/")
+devtools::install_github("ptds2023/Project-Group-B/immoswiss")
 ```
 
 ## Usage of the package
@@ -62,6 +62,6 @@ The 4th argument `lausanne` is the name of the dataset that is already loaded in
 
 
 
-Here is the website of our shinyapp : https://ptds2023.github.io/Project-Group-B/
+Here is the website of our shinyapp : file:///Users/arnaudbertrand/Documents/GitHub/Project-Group-B/immoswiss/docs/index.html
 
 

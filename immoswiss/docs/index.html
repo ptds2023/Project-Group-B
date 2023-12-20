@@ -64,22 +64,19 @@
   <div class="contents col-md-9">
 
 <div class="section level1">
-<div class="page-header"><h1 id="immoswiss">immoswiss<a class="anchor" aria-label="anchor" href="#immoswiss"></a>
+<div class="page-header"><h1 id="immoswiss-package">Immoswiss Package<a class="anchor" aria-label="anchor" href="#immoswiss-package"></a>
 </h1></div>
 <!-- badges: start -->
 
 </div>
 <div class="section level1">
-<h1 id="project-group-b">Project-Group-B<a class="anchor" aria-label="anchor" href="#project-group-b"></a>
+<h1 id="overview-">Overview 🇨🇭<a class="anchor" aria-label="anchor" href="#overview-"></a>
 </h1>
-<div class="section level2">
-<h2 id="overview-">Overview 🇨🇭<a class="anchor" aria-label="anchor" href="#overview-"></a>
-</h2>
 <p><code>immoswiss</code> is designed for estimating property prices in Lausanne using a Multiple Linear Regression model and K-Nearest Neighbors to find the most similar properties on the market 🏠. Additionally, the package allows users to visualize the effect of each criterion on the estimated price.</p>
 </div>
-<div class="section level2">
-<h2 id="methodology">Methodology<a class="anchor" aria-label="anchor" href="#methodology"></a>
-</h2>
+<div class="section level1">
+<h1 id="methodology">Methodology<a class="anchor" aria-label="anchor" href="#methodology"></a>
+</h1>
 <p>The package includes three functions :</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -87,7 +84,7 @@
 <ul>
 <li>🛌 the number of rooms</li>
 <li>🏠 square meters</li>
-<li>📍 location (Postal code) using a multiple linear regression model. The model, built on webscrapped data from Lausanne, treats location as a categorical variable, with zip code 1004 serving as the reference level.The function uses this model to estimate prices for the specified input values, considering the unique impact of each variable. This is an example :</li>
+<li>📍 location (Postal code) using a multiple linear regression model. The model, built on webscrapped data from Lausanne, treats location as a categorical variable, with zip code 1004 serving as the reference level.The function uses this model to estimate prices for the specified input values, considering the unique impact of each variable.</li>
 </ul>
 </li>
 <li><p><code>nearest_neighbor</code>🏠 function identifies the k nearest neighbors in a dataset based on : the number of rooms (nb_rooms), the number of square meters (meter_square), and the location (location). This function is useful for finding similar properties in terms of rooms, square meters, and location, aiding in property comparison and recommendation.</p></li>
@@ -101,17 +98,17 @@
 </ol>
 <p>The data comes from the immoscout website. We have scraped the data from Lausanne properties and stored it in the <code>lausanne</code> dataset. The <code>lausanne</code> dataset is included in our package and is the dataset that should be used by users.</p>
 </div>
-<div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h2>
+<div class="section level1">
+<h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h1>
 <p>You can install immoswiss from GitHub using the devtools package. If you don’t have devtools installed, you can install it by running:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Ourpath/"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ptds2023/Project-Group-B/immoswiss"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="usage-of-the-package">Usage of the package<a class="anchor" aria-label="anchor" href="#usage-of-the-package"></a>
-</h2>
+<div class="section level1">
+<h1 id="usage-of-the-package">Usage of the package<a class="anchor" aria-label="anchor" href="#usage-of-the-package"></a>
+</h1>
 <p>These are simple example that demonstrates how to use the functions of our package. Keep in mind that the main goal is to use those functions in the shiny app.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Find the 10 properties that are most similar to this hypothetical property with 5 rooms, 210 meter squares in location (Postal code) 1004:</span></span>
@@ -124,11 +121,10 @@
 <span><span class="fu"><a href="reference/launch_shiny_app.html">launch_shiny_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The 4th argument <code>lausanne</code> is the name of the dataset that is already loaded in the package.</p>
 </div>
-<div class="section level2">
-<h2 id="website">Website<a class="anchor" aria-label="anchor" href="#website"></a>
-</h2>
-<p>Here is the website of our shinyapp : <a href="https://ptds2023.github.io/Project-Group-B/" class="external-link uri">https://ptds2023.github.io/Project-Group-B/</a></p>
-</div>
+<div class="section level1">
+<h1 id="website">Website<a class="anchor" aria-label="anchor" href="#website"></a>
+</h1>
+<p>Here is the website of our shinyapp : <a href="file:///Users/arnaudbertrand/Documents/GitHub/Project-Group-B/immoswiss/docs/index.html" class="uri">file:///Users/arnaudbertrand/Documents/GitHub/Project-Group-B/immoswiss/docs/index.html</a></p>
 </div>
 
   </div>
