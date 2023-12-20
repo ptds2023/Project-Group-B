@@ -9,7 +9,6 @@
 <!-- badges: end -->
 
 
-
 # Overview 🇨🇭
 
 `immoswiss` is designed for estimating property prices in Lausanne using a Multiple Linear Regression model and K-Nearest Neighbors to find the most similar properties on the market 🏠. Additionally, the package allows users to visualize the effect of each criterion on the estimated price.
@@ -47,7 +46,7 @@ You can install immoswiss from GitHub using the devtools package. If you don't h
 
 ```r
 install.packages("devtools")
-devtools::install_github("Ourpath/")
+devtools::install_github("ptds2023/Project-Group-B/immoswiss")
 ```
 
 # Usage of the package
