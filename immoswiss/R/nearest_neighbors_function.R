@@ -37,11 +37,11 @@ find_nearest_neighbors <- function(rooms, meter_square, location, data, k = 5) {
   distances <- apply(cbind(scaled_data, encoded_locations), 1, function(x) sqrt(sum((x - scaled_query)^2)))
 
   # Combine distances with the original dataset
-  data_with_distances <- cbind(data, distance = distances)
+  data_with_distances <- cbind(data, distance = round(distances,2))
 
   # Sort the dataset by distance in ascending order
   sorted_data <- data_with_distances[order(data_with_distances$distance), ]
-
+  colnames(sorted_data) <- c("Rooms", "Surface", "Price", "Location", "Distance")
   # Return the top k nearest neighbors
   return(sorted_data[1:k, ])
 }

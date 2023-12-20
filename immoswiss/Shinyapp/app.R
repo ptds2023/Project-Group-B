@@ -72,7 +72,7 @@ ui <- fluidPage(
 
                #Specify the output of the second panel
                mainPanel(
-                 h4("Here you can find the most similar apartments based on your requirements:"),
+                 h4("Here you can find the most similar apartments based on your requirements:",br(),br()),
                  DT::dataTableOutput("table")
                )
              )
@@ -100,9 +100,9 @@ server <- function(input, output) {
   loc <- reactive(input$selected_loc_sel) %>% bindEvent(input$calc_sel)
 
   output$estimation <- renderPrint({
-    estimate <- immoswiss::estimate_price(rooms(), meters(), loc(),lausanne)
-    results <- paste0("<p>The estimated rent of your desired house/flat is: <strong>", round(estimate[1],3), " </strong>CHF.")
-    results2 <- paste0("This estimation ranges from <strong>", round(estimate[2],3), "</strong>CHF to <strong>", round(estimate[3],3), "</strong>CHF.</p><br><br><p>
+      estimate <- estimate_price(rooms(), meters(), loc(),lausanne)
+      results <- paste0("<p>The estimated rent of your desired house/flat is: <strong>", round(estimate[1],3), " </strong> CHF.")
+      results2 <- paste0("This estimation ranges from <strong>", round(estimate[2],3), "</strong> CHF to <strong>", round(estimate[3],3), "</strong> CHF.</p><br><br><p>
                        Below you will find the change in rent per location for your desired house features <br>You can click on any point to get rent details.</p>")
 
     # Use HTML tags to create a line break
