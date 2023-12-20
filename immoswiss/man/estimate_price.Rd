@@ -7,11 +7,11 @@
 estimate_price(rooms, meter_square, location, data)
 }
 \arguments{
+\item{rooms}{The number of rooms.}
+
 \item{meter_square}{The number of square meters.}
 
 \item{location}{The location (postal code).}
-
-\item{num_rooms}{The number of rooms.}
 
 \item{lausanne}{The dataset containing information on rooms, meter_square, price, and location}
 }

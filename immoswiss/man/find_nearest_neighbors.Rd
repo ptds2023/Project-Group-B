@@ -4,10 +4,10 @@
 \alias{find_nearest_neighbors}
 \title{Find Nearest Neighbors based on rooms and square meters}
 \usage{
-find_nearest_neighbors(nb_rooms, meter_square, location, data, k = 5)
+find_nearest_neighbors(rooms, meter_square, location, data, k = 5)
 }
 \arguments{
-\item{nb_rooms}{Number of rooms specified by the user}
+\item{rooms}{Number of rooms specified by the user}
 
 \item{meter_square}{Number of square meters specified by the user}
 
