@@ -1,5 +1,5 @@
 #' Estimate the price through a multiple linear regression
-#' @param num_rooms The number of rooms.
+#' @param rooms The number of rooms.
 #' @param meter_square The number of square meters.
 #' @param location The location (postal code).
 #' @param lausanne The dataset containing information on rooms, meter_square, price, and location
@@ -9,6 +9,13 @@
 #' @examples
 #' estimate_price(2, 100, 1000, lausanne) # 2 is the number of rooms, 100 is the number of meter square and 1000 is the location
 estimate_price <- function(rooms, meter_square, location, data) {
+  valid_locations <- c(1000, 1003, 1004, 1005,1006,1007,1010,1012,1018)
+  if (!(location %in% valid_locations)) {
+    stop("Invalid location. Please enter a valid location from the list: 1000, 1003, 1004, 1005,1006,1007,1010,1012,1018")
+  }
+  if (rooms %% 0.5 != 0) {
+    stop("Invalid number of rooms. Please enter a number of rooms in increments of 0.5.")
+  }
   # Assuming 'model' is your linear regression model
   model <- lm(log(price) ~ rooms +meter_square + as.factor(location) + meter_square:as.factor(location) + rooms:as.factor(location), data = data)
   summary(model)
@@ -20,4 +27,5 @@ estimate_price <- function(rooms, meter_square, location, data) {
   print(summary(model))
   return(predicted_price)
 }
+
 

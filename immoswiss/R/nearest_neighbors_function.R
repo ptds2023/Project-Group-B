@@ -1,5 +1,5 @@
 #' Find Nearest Neighbors based on rooms and square meters
-#' @param nb_rooms Number of rooms specified by the user
+#' @param rooms Number of rooms specified by the user
 #' @param meter_square Number of square meters specified by the user
 #' @param location Location (postal code) specified by the user
 #' @param lausanne The dataset containing information on rooms, meter_square, price, and location
@@ -8,12 +8,19 @@
 #' @export
 #' @examples
 #' find_nearest_neighbors(5, 210, "1004", lausanne, k = 10)
-find_nearest_neighbors <- function(nb_rooms, meter_square, location, data, k = 5) {
+find_nearest_neighbors <- function(rooms, meter_square, location, data, k = 5) {
+  valid_locations <- c(1000, 1003, 1004, 1005,1006,1007,1010,1012,1018)
+  if (!(location %in% valid_locations)) {
+    stop("Invalid location. Please enter a valid location from the list: 1000, 1003, 1004, 1005,1006,1007,1010,1012,1018")
+  }
+  if (rooms %% 0.5 != 0) {
+    stop("Invalid number of rooms. Please enter a number of rooms in increments of 0.5.")
+  }
   # Scale the numerical features (rooms and meter_square)
   scaled_data <- scale(data[, c("rooms", "meter_square")])
 
   # Scale the query numerical parameters using mean and standard deviation of dataset columns
-  scaled_query <- c((nb_rooms - mean(data$rooms)) / sd(data$rooms),
+  scaled_query <- c((rooms - mean(data$rooms)) / sd(data$rooms),
                     (meter_square - mean(data$meter_square)) / sd(data$meter_square))
 
   # One-hot encode the location column for the query
