@@ -46,36 +46,61 @@ library(textdata)
 
 # Introduction and Objectives
 
-## Objectives and potential impacts
+## Objectives
 
-- Understand the value addition of Text Mining
-- Being able to carry our Exploratory Data Analysis (EDA) on text data using R
-- Apply unsupervised methods for topic modeling
-- Develop several supervised models using text
-- Practice and master the tidy text and `quanteda` packages in R
+- Use of Rmarkdown
+- Use of GitHub as a collaborative tool to work on a R project
+- Web scrapping using rvest
+- Exploratory Data Analysis and functions creation
+- Build a Shiny app to share results in an interactive way
+- Construction of a R-package
 
 ## Project description  
 
-* Methods used 
-* What inspired us ? 
-* How did we collect the data ? What are the risks of using this strategy ? 
+Building a tool to help students and others to have an easy and fast access to an overview of rent prices in Lausanne depending to their need of number of rooms and location.
 
+* Steps : webscrapping, functions creation for EDA, create a shiny app, create a R-package
+* Source of data: Immoscout.ch
 
 # Webscrapping  
 
 ## Immoscout website
 
+```{r, out.width = "500px"}
+knitr::include_graphics("IMMOSCOUT_WEBSITE.png")
+```
 
 # R Package creation   
 
 ## Package functions 
 
+- estimate_price: A multiple linear regression function trained on the offers on Immoscout website that take a *number of rooms*, the *surface* and a *postal code* as variables and return an estimated rent price 
+- Nearest_neighbors function: Return similar properties in terms of rooms, square meters, and location, helping in property comparison and recommendation
+- launch_shiny_app: A function to facilitate the launch of the shiny app by specifying the path to the Shiny app directory within the **immoswiss** package
 
 # Shiny App
 
 ## Price estimation 
 
+```{r, out.width = "600px"}
+knitr::include_graphics("Price_estimation_shinyapp.png")
+```
+
 ## Find the 5 most similar appartments 
 
-## Impact of square meters on the price 
+```{r, out.width = "800px"}
+knitr::include_graphics("Similar_offers_shinyapp.png")
+```
+
+# Shiny App live demo
+
+## Conclusion
+
+We have successfully built a R package and a shiny app to display rent estimates and similar offers in Lausanne according to user input, thanks to web scrapping, creating functions to analyse the data and GitHub to work in a group on this project.
+
+**Possible improvements: **
+
+- Adding other cities -> could also improve the model estimates
+- Adding new website sources to get more data
+- Adding a direct link to the rent offer
 
