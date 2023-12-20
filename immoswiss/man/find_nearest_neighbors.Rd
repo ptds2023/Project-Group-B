@@ -24,5 +24,5 @@ A data frame with the k nearest neighbors matching the query
 Find Nearest Neighbors based on rooms and square meters
 }
 \examples{
-find_nearest_neighbors(5, 210, "1004", lausanne, k = 10)
+find_nearest_neighbors(5, 210, 1004, lausanne, k = 10)
 }
