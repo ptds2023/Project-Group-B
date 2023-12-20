@@ -1,6 +1,10 @@
 #' Launch the Shiny App
 #' @export
 launch_shiny_app <- function() {
-  app_path <- system.file("shiny_app", package = "immoswiss")
-  shiny::runApp(appDir = app_path)
+  appDir <- system.file("Shinyapp", package = "immoswiss")
+  if (appDir == "") {
+    stop("Could not find example directory. Try re-installing `mypackage`.", call. = FALSE)
+  }
+
+  shiny::runApp(appDir, display.mode = "normal")
 }
