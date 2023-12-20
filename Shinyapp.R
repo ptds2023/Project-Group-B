@@ -3,7 +3,6 @@ library(dplyr)
 library(ggplot2)
 # library(immoswiss)
 
-lausanne <- read.csv("immoswiss/data/lausanne.csv")
 
 find_nearest_neighbors <- function(nb_rooms, meter_square, location, data, k = 5) {
   # Scale the numerical features (rooms and meter_square)
@@ -27,10 +26,12 @@ find_nearest_neighbors <- function(nb_rooms, meter_square, location, data, k = 5
   distances <- apply(cbind(scaled_data, encoded_locations), 1, function(x) sqrt(sum((x - scaled_query)^2)))
   
   # Combine distances with the original dataset
-  data_with_distances <- cbind(data, distance = distances)
+  data_with_distances <- cbind(data, distance = round(distances,2))
   
   # Sort the dataset by distance in ascending order
   sorted_data <- data_with_distances[order(data_with_distances$distance), ]
+  colnames(sorted_data) <- c("Rooms", "Surface", "Price", "Location", "Distance")
+  
   
   # Return the top k nearest neighbors
   return(sorted_data[1:k, ])
@@ -111,69 +112,69 @@ ui <- fluidPage(
     
     # Define the first panel (title)
     tabPanel("Estimate the price",
-      
-      #Specify input button for the first panel
-      sidebarLayout(
-        sidebarPanel(
-          selectInput("selected_loc_sel", "Select the postal code of your proprety:",
-                      choices = sort(unique(lausanne$location)), 
-                      selected = "1000"),
-          
-          numericInput("rooms_sel", "Number of rooms:", 2.5 , min = 1),
-          
-          numericInput("meter_sel", "Square Meter:", 50 , min = 5),
-          
-          actionButton("calc_sel", "Calculate the estimated rent of your housing"), 
-        ),
-        
-        #Specify the output of the first panel
-        mainPanel(
-          h4("Results:"),
-          uiOutput("estimation"),
-          plotOutput("plot", click = "plot_click"),
-          tableOutput("data")
-
-        )
-      )
+             
+             #Specify input button for the first panel
+             sidebarLayout(
+               sidebarPanel(
+                 selectInput("selected_loc_sel", "Select the postal code of your proprety:",
+                             choices = sort(unique(lausanne$location)), 
+                             selected = "1000"),
+                 
+                 numericInput("rooms_sel", "Number of rooms:", 2.5 , min = 1),
+                 
+                 numericInput("meter_sel", "Square Meter:", 50 , min = 5),
+                 
+                 actionButton("calc_sel", "Calculate the estimated rent of your housing"), 
+               ),
+               
+               #Specify the output of the first panel
+               mainPanel(
+                 h4("Results:"),
+                 uiOutput("estimation"),
+                 plotOutput("plot", click = "plot_click"),
+                 tableOutput("data")
+                 
+               )
+             )
     ),
     
     
     #Define the second panel (title)
     tabPanel("Explore your option",
-      
-      #Specify input button for the second panel
-      sidebarLayout(
-        sidebarPanel(
-          selectInput("selected_loc_buy", "Test the postal code of your proprety:",
-                      choices = sort(unique(lausanne$location)), 
-                      selected = "1000"),
-          
-          sliderInput("room_slide", "Select the number of rooms:", min = 1, max = 10,
-                      value = 2.5, step = 0.5),
-          
-          sliderInput("square_slide", "Select the squares meters:", min = 10, max = 500,
-                      value = 50, step = 10),
-          
-          sliderInput("k", "Select how many similar apartments should be given:", min = 1, max = 50,
-                      value = 5, step = 1)
-          
-        ),
-        
-        #Specify the output of the second panel
-        mainPanel(
-          h4("Here you can find the most similar apartments based on your requirements:"),
-          DT::dataTableOutput("table")
-        )
-      )
+             
+             #Specify input button for the second panel
+             sidebarLayout(
+               sidebarPanel(
+                 selectInput("selected_loc_buy", "Test the postal code of your proprety:",
+                             choices = sort(unique(lausanne$location)), 
+                             selected = "1000"),
+                 
+                 sliderInput("room_slide", "Select the number of rooms:", min = 1, max = 10,
+                             value = 2.5, step = 0.5),
+                 
+                 sliderInput("square_slide", "Select the squares meters:", min = 10, max = 500,
+                             value = 50, step = 10),
+                 
+                 sliderInput("k", "Select how many similar apartments should be given:", min = 1, max = 50,
+                             value = 5, step = 1)
+                 
+               ),
+               
+               #Specify the output of the second panel
+               mainPanel(
+                 h4("Here you can find the most similar apartments based on your requirements:",br(),br()),
+                 DT::dataTableOutput("table")
+                 
+               )
+             )
     )
   )
 )
-
 # Define server logic
 server <- function(input, output) {
   
-
- #Table for knn
+  
+  #Table for knn
   output$table <- DT::renderDataTable({
     
     table_knn <- find_nearest_neighbors(input$room_slide, input$square_slide, input$selected_loc_buy, lausanne, input$k)
@@ -190,10 +191,10 @@ server <- function(input, output) {
   
   output$estimation <- renderPrint({
     estimate <- estimate_price(rooms(), meters(), loc())
-    results <- paste0("<p>The estimated rent of your desired house/flat is: <strong>", round(estimate[1],3), " </strong>CHF.")
-    results2 <- paste0("This estimation ranges from <strong>", round(estimate[2],3), "</strong>CHF to <strong>", round(estimate[3],3), "</strong>CHF.</p><br><br><p>
+    results <- paste0("<p>The estimated rent of your desired house/flat is: <strong>", round(estimate[1],3), " </strong> CHF.")
+    results2 <- paste0("This estimation ranges from <strong>", round(estimate[2],3), "</strong> CHF to <strong>", round(estimate[3],3), "</strong> CHF.</p><br><br><p>
                        Below you will find the change in rent per location for your desired house features <br>You can click on any point to get rent details.</p>")
-   
+    
     # Use HTML tags to create a line break
     HTML(paste(results, results2, sep = "<br><br>"))
     
@@ -211,8 +212,8 @@ server <- function(input, output) {
   price_loc <- data.frame("Location" = as.factor(unique_loc), "Estimate" = numeric(length(unique_loc)),
                           "Lower" = numeric(length(unique_loc)), "Upper" = numeric(length(unique_loc)))
   
-
-
+  
+  
   #Plot the results
   output$plot <- renderPlot({
     
@@ -241,7 +242,7 @@ server <- function(input, output) {
       scale_color_manual(values = c("Rent estimation" = "red")) +
       scale_fill_manual(values = c("95% rent range" = "blue")) +
       theme_minimal()
-  
+    
   }, res = 96)
   #end output$plot
   
@@ -258,13 +259,13 @@ server <- function(input, output) {
       price_loc$Estimate[index] <- estimate[1]
       price_loc$Lower[index] <- estimate[2]
       price_loc$Upper[index] <- estimate[3]
-   
+      
     }
     #Retrieve mouse coordinate and display the nearest data frame entry (no need of xvar, yvar with ggplot2)
     nearPoints(price_loc, input$plot_click)
     
-    })
-    #end output$data
+  })
+  #end output$data
   
 }
 
