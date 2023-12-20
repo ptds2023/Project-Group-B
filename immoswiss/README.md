@@ -70,4 +70,4 @@ The 4th argument `lausanne` is the name of the dataset that is already loaded in
 
 
 
-Here is the website of our shinyapp : file:///Users/arnaudbertrand/Documents/GitHub/Project-Group-B/immoswiss/docs/index.html
+Here is the website of our shinyapp : https://ptds2023.github.io/Project-Group-B/immoswiss/
