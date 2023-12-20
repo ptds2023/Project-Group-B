@@ -1,0 +1,35 @@
+---
+title: "immoswiss"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to immoswiss Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(immoswiss)
+```
+
+# Introduction to Immoswiss Package
+
+## Installation
+
+To install the Immoswiss package, use the following command:
+
+```{r eval=FALSE}
+install.packages("immoswiss")
+```
+
+```{r eval=FALSE}
+# Example usage of estimate_price()
+result <- estimate_price(2, 100, 1004, lausanne)
+print(result)
+```
