@@ -123,7 +123,7 @@ ui <- fluidPage(
           
           numericInput("meter_sel", "Square Meter:", 50 , min = 5),
           
-          actionButton("calc_sel", "Calculate the estimated price of your house."), 
+          actionButton("calc_sel", "Calculate the estimated rent of your housing"), 
         ),
         
         #Specify the output of the first panel
@@ -151,16 +151,17 @@ ui <- fluidPage(
           sliderInput("room_slide", "Select the number of rooms:", min = 1, max = 10,
                       value = 2.5, step = 0.5),
           
-          sliderInput("square_slide", "Select the squares meters:", min = 10, max = 600,
+          sliderInput("square_slide", "Select the squares meters:", min = 10, max = 500,
                       value = 50, step = 10),
           
-          sliderInput("k", "Select how many options should be given:", min = 1, max = 20,
+          sliderInput("k", "Select how many similar apartments should be given:", min = 1, max = 50,
                       value = 5, step = 1)
           
         ),
         
         #Specify the output of the second panel
         mainPanel(
+          h4("Here you can find the most similar apartments based on your requirements:"),
           DT::dataTableOutput("table")
         )
       )
@@ -170,6 +171,7 @@ ui <- fluidPage(
 
 # Define server logic
 server <- function(input, output) {
+  
 
  #Table for knn
   output$table <- DT::renderDataTable({
@@ -182,8 +184,6 @@ server <- function(input, output) {
   
   
   #Price estimation
-  
- 
   rooms <- reactive(input$rooms_sel) %>% bindEvent(input$calc_sel)
   meters <- reactive(input$meter_sel) %>% bindEvent(input$calc_sel)
   loc <- reactive(input$selected_loc_sel) %>% bindEvent(input$calc_sel)
@@ -198,12 +198,12 @@ server <- function(input, output) {
     HTML(paste(results, results2, sep = "<br><br>"))
     
   })
-  
+  #end output$estimation
   
   
   
   #Price estimation with all param fixed but Location
-  
+  #Get all location
   unique_loc <- sort(unique(lausanne$location))
   
   
@@ -213,7 +213,7 @@ server <- function(input, output) {
   
 
 
-  #Plot the 
+  #Plot the results
   output$plot <- renderPlot({
     
     #Loop through all location to get estimate and update price_loc
@@ -230,7 +230,7 @@ server <- function(input, output) {
       
     }
     
-    
+    #Plot definition
     ggplot(price_loc, aes(x = Location, y = Estimate, group = 1)) +
       geom_point(aes(color = "Rent estimation"), size = 4, shape = 20) +
       geom_line(linetype = "dashed", linewidth = 0.5) +
@@ -246,6 +246,7 @@ server <- function(input, output) {
   #end output$plot
   
   
+  #Interactive table reacting to input$plot_click
   output$data <- renderTable({
     
     #Loop through all location to get estimate and update price_loc
@@ -259,7 +260,7 @@ server <- function(input, output) {
       price_loc$Upper[index] <- estimate[3]
    
     }
-    
+    #Retrieve mouse coordinate and display the nearest data frame entry (no need of xvar, yvar with ggplot2)
     nearPoints(price_loc, input$plot_click)
     
     })
