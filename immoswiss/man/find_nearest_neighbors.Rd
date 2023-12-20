@@ -13,9 +13,9 @@ find_nearest_neighbors(rooms, meter_square, location, data, k = 5)
 
 \item{location}{Location (postal code) specified by the user}
 
-\item{k}{Number of nearest neighbors to retrieve (default is 5)}
+\item{data}{The dataset containing information on rooms, meter_square, price, and location}
 
-\item{lausanne}{The dataset containing information on rooms, meter_square, price, and location}
+\item{k}{Number of nearest neighbors to retrieve (default is 5)}
 }
 \value{
 A data frame with the k nearest neighbors matching the query

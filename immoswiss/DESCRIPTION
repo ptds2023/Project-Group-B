@@ -2,10 +2,10 @@ Package: immoswiss
 Type: Package
 Title: Property Price Estimation
 Version: 0.1.0
-Authors: Meriem Ben Mustapha, Arnaud Bertrand, Alexandre Gautschi, Fabien Calderini, Lawrence Jesudasan
+Author: Meriem Ben Mustapha, Arnaud Bertrand, Alexandre Gautschi, Fabien Calderini, Lawrence Jesudasan
 Maintainer: The package maintainer <lawrence.jesudasan@unil.ch>
 Description: immoswiss is designed for estimating property prices in Lausanne using a Multiple Linear Regression model and K-Nearest Neighbors to find the most similar properties on the market. Additionally, the package allows users to visualize the effect of each criterion on the estimated price.
-License: MIT + LICENSE file
+License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3

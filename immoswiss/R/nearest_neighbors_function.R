@@ -2,12 +2,12 @@
 #' @param rooms Number of rooms specified by the user
 #' @param meter_square Number of square meters specified by the user
 #' @param location Location (postal code) specified by the user
-#' @param lausanne The dataset containing information on rooms, meter_square, price, and location
+#' @param data The dataset containing information on rooms, meter_square, price, and location
 #' @param k Number of nearest neighbors to retrieve (default is 5)
 #' @return A data frame with the k nearest neighbors matching the query
 #' @export
-#' @examples
-#' find_nearest_neighbors(5, 210, "1004", lausanne, k = 10)
+#' @importFrom stats sd
+#' @examples find_nearest_neighbors(5, 210, "1004", lausanne, k = 10)
 find_nearest_neighbors <- function(rooms, meter_square, location, data, k = 5) {
   valid_locations <- c(1000, 1003, 1004, 1005,1006,1007,1010,1012,1018)
   if (!(location %in% valid_locations)) {

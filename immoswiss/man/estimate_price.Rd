@@ -13,7 +13,7 @@ estimate_price(rooms, meter_square, location, data)
 
 \item{location}{The location (postal code).}
 
-\item{lausanne}{The dataset containing information on rooms, meter_square, price, and location}
+\item{data}{The dataset containing information on rooms, meter_square, price, and location}
 }
 \value{
 The estimated prices of apartments with confidence intervals.
@@ -22,5 +22,5 @@ The estimated prices of apartments with confidence intervals.
 Estimate the price through a multiple linear regression
 }
 \examples{
-estimate_price(2, 100, 1000, lausanne) # 2 is the number of rooms, 100 is the number of meter square and 1000 is the location
+estimate_price(2, 100, 1000, lausanne)
 }
