@@ -54,7 +54,7 @@ Final dataset with 230 instances, each one representing an advertisement of a pr
 
 ## Shiny app interface - Price estimation 
 
-![](slides/price_estimation.png){width="50%"}
+![](slides/price_estimation.png){width="50%"} 
 
 * *Estimated rent* : Multiple regression model estimates the rent prices for the specified zipcode, number of rooms, and square meters
 * *Confidence interval*: 95% probability that the estimated rent price is between a lower bound and an upper bound.
@@ -63,9 +63,7 @@ Final dataset with 230 instances, each one representing an advertisement of a pr
 
 ##  Shiny app interface - Find the k most similar properties
 
-<figure>
-  <img src="slides/similar_appartments.png" width="60%" alt="Similar Apartments">
-</figure>
+![](slides/similar_appartments.png){width="60%"}
 
 1. Insert the property features the user is looking for 
 2. Compute the features distance between the features inserted and the properties in `lausanne dataset`.
