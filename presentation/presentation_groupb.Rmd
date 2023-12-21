@@ -17,7 +17,7 @@ theme: "CambridgeUS"
 * *Step 2*: Shiny App Creation - serving as an interactive interface for users interested in exploring the Lausanne real estate market. Users can input specific features and preferences to estimate property rents and discover the most similar properties available. 
 
 
-# Webscrapping  
+# Webscraping  
 
 ## Immoscout website
 
@@ -75,9 +75,8 @@ Final dataset with 230 instances, each one representing an advertisement of a pr
 
 ## Limitations 
 
-* Limited data due to webscraping 
-* Non- ethical way of collecting data 
-* Frequently updated website - dataset used in our package might change 
+* Webscraped data :  limited data, non- ethical way of collecting data, frequently updated website 
+* Github repository organization  
 
 ## Further improvements 
 
