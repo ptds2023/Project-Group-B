@@ -27,7 +27,7 @@ theme: "CambridgeUS"
 
 ![](slides/property_data.png){width="50%"}
 
-Final dataset with 230 instances, everyone representing a property currently available in Lausanne. 
+Final dataset with 230 instances, each one representing an advertisement of a property  available in Lausanne. 
 4 variables collected among all website pages : 
 
 * **rooms** : Number of rooms in the property
