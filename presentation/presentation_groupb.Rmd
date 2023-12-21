@@ -1,123 +1,90 @@
 ---
-title: "Programming tools : Creating a Shiny App to find an appartment in Lausanne "
-author: "Arnaud Bertrand, Meriem Ben Mustapha, Alexandre Gautschi, Lawrence Jesudasan,
-  Fabien Calderini"
-institute: "University of Lausanne"
-date: "`r Sys.Date()`"
-output: 
-  beamer_presentation:
-    theme: "Boadilla"
-    colortheme: "dolphin"
-    fonttheme: "structurebold"
-    toc: TRUE
+title: "Real Estate Market Analysis "
+subtitle: "Discover Your Ideal Home in Lausanne"
+author: "Group B"
+output: beamer_presentation
+theme: "CambridgeUS"
 ---
-
-```{css, echo = FALSE}
-.remark-slide-content {
-  font-size: 28px;
-  padding: 20px 80px 20px 80px;
-}
-.remark-code, .remark-inline-code {
-  background: #f0f0f0;
-}
-.remark-code {
-  font-size: 24px;
-}
-.huge .remark-code { /*Change made here*/
-  font-size: 200% !important;
-}
-.tiny .remark-code { /*Change made here*/
-  font-size: 50% !important;
-}
-```
-
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-library(tidyverse)
-library(tidytext)
-library(quanteda)
-library(quanteda.textmodels)
-library(quanteda.textstats)
-library(quanteda.textplots)
-library(textdata)
-```
-
 
 # Introduction and Objectives
 
-## Objectives
+## Project description and objectives 
 
-- Use of Rmarkdown
-- Use of GitHub as a collaborative tool to work on a R project
-- Web scrapping using rvest
-- Exploratory Data Analysis and functions creation
-- Build a Shiny app to share results in an interactive way
-- Construction of a R-package
+* Create an intuitive and efficient interface for Lausanne residents, enabling them to easily find properties for rent by using data from a prominent real estate website `immoscout`. 
 
-## Project description  
+* *Step 1* : R Package Creation (immoswiss) - R package named 'immoswiss.' designed to estimate property rents in Lausanne based on specified features and to identify the most similar properties available in the market. 
 
-Building a tool to help students and others to have an easy and fast access to an overview of rent prices in Lausanne depending to their need of number of rooms and location.
+* *Step 2*: Shiny App Creation - serving as an interactive interface for users interested in exploring the Lausanne real estate market. Users can input specific features and preferences to estimate property rents and discover the most similar properties available. 
 
-* Project steps : 
-
-  + Web scrapping to get data
-  + Create functions for EDA and visualization
-  + Create a shiny app
-  + Create a R-package
-  
-  
-* Source of data: Immoscout.ch
 
 # Webscrapping  
 
 ## Immoscout website
 
-```{r, out.width = "200px"}
-knitr::include_graphics("IMMOSCOUT_WEBSITE.png")
-```
+![](slides/immoscout.png){width="100%"}
 
-# R Package creation   
+## Lausanne dataset  
 
-## Package functions 
+![](slides/property_data.png){width="50%"}
 
-- estimate_price: A multiple linear regression function trained on the offers on Immoscout website that take a *number of rooms*, the *surface* and a *postal code* as variables and return an estimated rent price 
-- Nearest_neighbors function: Return similar properties in terms of rooms, square meters, and location, helping in property comparison and recommendation
-- launch_shiny_app: A function to facilitate the launch of the shiny app by specifying the path to the Shiny app directory within the **immoswiss** package
+Final dataset with 230 instances, everyone representing a property currently available in Lausanne. 
+4 variables collected among all website pages : 
 
-# Shiny App
-
-## Rent price estimation
-
- 
-```{r, out.width = "290px"}
-knitr::include_graphics("Price_estimation_shinyapp.png")
-```
-
-## Finding the most similar appartments 
- 
-```{r, out.width = "300px"}
-knitr::include_graphics("Similar_offers_shinyapp.png")
-```
-
-# Shiny App live demo
-
-# Limitations and possible improvements
-
-## Conclusion
-We have successfully built a R package and a shiny app to display rent estimates and similar offers in Lausanne according to user input, thanks to web scrapping, creating functions to analyse the data and GitHub to work in a group on this project.
+* **rooms** : Number of rooms in the property
+* **meter_square** : Number of square meters in the property
+* **price** : monthly rent of the property 
+* **location** : zipcode of the property location 
 
 
-**Limitations: **
+# R Package creation : main functions  
 
-- Only one city with limited number of rent offers
-- Any changes made to Immoscout website could break the webscrapping function
+## Multiple Linear Regresion
 
-**Possible improvements: **
+![](slides/reg_model.png){width="100%"}
 
-- Adding other cities -> could also improve the model estimates
-- Adding new website sources to get more data
-- Adding a direct link to the rent offer
+
+* \(\beta_0\) is the intercept,
+* \(\beta_1\) is the coefficient for \(\text{rooms}\),
+* \(\beta_2\) is the coefficient for \(\text{meter\_square}\),
+* \(\beta_3\) is the coefficient for \(\text{location}\),
+* \(\beta_4\) is the coefficient for \(\text{meter\_square} \times \text{location}\),
+* \(\beta_5\) is the coefficient for \(\text{rooms} \times \text{location}\),
+* \(\epsilon\) represents the error term.
+
+
+## Shiny app interface - Price estimation 
+
+![](slides/price_estimation.png){width="50%"}
+
+* *Estimated rent* : Multiple regression model estimates the rent prices for the specified zipcode, number of rooms, and square meters
+* *Confidence interval*: 95% probability that the estimated rent price is between a lower bound and an upper bound.
+* *Estimated rent depending on the location zipcode plot * :  Rent price variation of a specified property features in different locations in Lausanne and 95% confidence interval for every zipcode rent price estimation 
+
+
+##  Shiny app interface - Find the k most similar properties
+
+<figure>
+  <img src="slides/similar_appartments.png" width="60%" alt="Similar Apartments">
+</figure>
+
+1. Insert the property features the user is looking for 
+2. Compute the features distance between the features inserted and the properties in `lausanne dataset`.
+3. Select the k nearest neighbors.
+4. Table representing the k most similar properties in Lausanne.
+
+
+# Conclusion  
+
+## Limitations 
+
+* Limited data due to webscraping 
+* Non- ethical way of collecting data 
+* Frequently updated website - dataset used in our package might change 
+
+## Further improvements 
+
+* Shiny app that could benefit future incoming students in Lausanne.
+* Adding more data sources (real estate agencies, student accommodation entities, social media groups).
+* Analysis part : redirection to url corresponding to the property. 
+
 
