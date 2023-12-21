@@ -1,13 +1,15 @@
 ---
-title: "Final presentation : Creating a Shiny Application to find an appartment in Lausanne "
+title: "Programming tools : Creating a Shiny App to find an appartment in Lausanne "
 author: "Arnaud Bertrand, Meriem Ben Mustapha, Alexandre Gautschi, Lawrence Jesudasan,
   Fabien Calderini"
+institute: "University of Lausanne"
 date: "`r Sys.Date()`"
 output: 
-  ioslides_presentation:
-    font_adjustment: 1
-    widescreen: yes
-  beamer_presentation: default
+  beamer_presentation:
+    theme: "Boadilla"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+    toc: TRUE
 ---
 
 ```{css, echo = FALSE}
@@ -59,14 +61,21 @@ library(textdata)
 
 Building a tool to help students and others to have an easy and fast access to an overview of rent prices in Lausanne depending to their need of number of rooms and location.
 
-* Steps : webscrapping, functions creation for EDA, create a shiny app, create a R-package
+* Project steps : 
+
+  + Web scrapping to get data
+  + Create functions for EDA and visualization
+  + Create a shiny app
+  + Create a R-package
+  
+  
 * Source of data: Immoscout.ch
 
 # Webscrapping  
 
 ## Immoscout website
 
-```{r, out.width = "500px"}
+```{r, out.width = "200px"}
 knitr::include_graphics("IMMOSCOUT_WEBSITE.png")
 ```
 
@@ -80,23 +89,31 @@ knitr::include_graphics("IMMOSCOUT_WEBSITE.png")
 
 # Shiny App
 
-## Price estimation 
+## Rent price estimation
 
-```{r, out.width = "600px"}
+ 
+```{r, out.width = "290px"}
 knitr::include_graphics("Price_estimation_shinyapp.png")
 ```
 
-## Find the 5 most similar appartments 
-
-```{r, out.width = "800px"}
+## Finding the most similar appartments 
+ 
+```{r, out.width = "300px"}
 knitr::include_graphics("Similar_offers_shinyapp.png")
 ```
 
 # Shiny App live demo
 
-## Conclusion
+# Limitations and possible improvements
 
+## Conclusion
 We have successfully built a R package and a shiny app to display rent estimates and similar offers in Lausanne according to user input, thanks to web scrapping, creating functions to analyse the data and GitHub to work in a group on this project.
+
+
+**Limitations: **
+
+- Only one city with limited number of rent offers
+- Any changes made to Immoscout website could break the webscrapping function
 
 **Possible improvements: **
 
